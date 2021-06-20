@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import logo from '../images/logo.svg';
 import Api from './Api';
 import Card from './Card';
 import FormValidator from './FormValidator';
@@ -9,38 +10,19 @@ import PopupWithForm from './PopupWithForm';
 import PopupWithImage from './PopupWithImage';
 import Section from './Section';
 import UserInfo from './UserInfo';
+import Header from './Header';
+import Main from './Main'
+import Footer from './Footer'
 
 
 function App() {
     return (
     <>
             <div className="page">
-                <header className="header">
-                    <img src="<%=require('./images/logo.svg')%>" alt="логотип" class="logo"></img>
-                </header>
-                <main className="content">
-                    <section className="profile">
-                        <div className="profile__photo-container">
-                            <img src="#" alt="фото профиля" className="profile__photo"></img>
-                            <button type="button" className="profile__photo-edit-btn"></button>
-                        </div>
-                        <div className="profile__text">
-                            <div className="profile__title">
-                                <h1 className="profile__name"></h1>
-                                <button type="button" aria-label="редактировать" className="profile__edit-btn btn-opacity-change"></button>
-                            </div>
-                            <p className="profile__about"></p>
-                        </div>
-                        <button type="button" className="profile__add-btn btn-opacity-change"></button>
-                    </section>
-
-                    <section className="cards">
-
-                    </section>
-                </main>
-                <footer className="footer">
-                    <p className="footer__text">&copy; 2020 Mesto Russia</p>
-                </footer>
+                <Header />
+                <Main />
+                <Footer />
+            
 
                 <div className="popup popup-edit">
                     <div className="popup__container">
