@@ -1,32 +1,18 @@
+import React from 'react';
 
-import Popup from './Popup.js'
-
-export default class PopupWithForm extends Popup {
-    constructor(popupSelector, submitHandler) {
-        super(popupSelector);
-        this._submitHandler = submitHandler;
-        this._form = this._popup.querySelector('.form');
-        this._inputs = this._form.querySelectorAll('.form__item');
-        this._submitBtn = this._form.querySelector('.popup__submit-btn');
-    }
-    _getInputValues() {
-        const values = {};
-        this._inputs.forEach(input => {
-            values.name = input.value;
-        });
-        return values;
-    }
-    setEventListeners() {
-        super.setEventListeners();
-        this._form.addEventListener('submit', () => {
-            this._submitHandler(this._getInputValues());
-        })
-    }
-    close() {
-        this._form.reset();
-        super.close();
-    }
-    renderLoading(status){
-        (status) ? this._submitBtn.textContent = "Сохранение..." : this._submitBtn.textContent = "Сохранить";
-    }
+function PopupWithForm(props) {
+    return (
+        <div className={`popup popup_type_${props.name}`}>
+            <div className="popup__container">
+                <button type="button" className="popup__close-btn btn-opacity-change">+</button>
+                <h2 className="popup__title">{props.title}</h2>
+                <form name={props.name} class="form form-profile" novalidate>
+                    <button type="submit" className="popup__submit-btn black-btn-style">{props.buttonName}</button>
+                    {props.children}
+                </form>
+            </div>
+        </div>
+    )
+    
 }
+export default PopupWithForm;

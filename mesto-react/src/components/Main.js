@@ -1,6 +1,12 @@
 import React from 'react'
 
 function Main() {
+
+    handleEditAvatarClick
+    handleEditProfileClick
+    handleAddPlaceClick
+
+    
     return (
         <main className="content">
             <section className="profile">
