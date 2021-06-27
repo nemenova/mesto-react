@@ -12,4 +12,4 @@ function PopupImage(props) {
         </div>
     )
 }
-export default PopupIma ge;
+export default PopupImage;
