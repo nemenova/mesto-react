@@ -20,3 +20,9 @@
 .profile__photo-edit-btn:focus{
     border: none;
 }
+@media screen and (max-width: 835px) {
+     .profile__photo-edit-btn {
+         display: flex;
+        margin: auto;
+    }
+ }

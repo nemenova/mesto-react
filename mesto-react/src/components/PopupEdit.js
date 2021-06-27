@@ -3,7 +3,7 @@ import PopupWithForm from './PopupWithForm'
 
 function PopupEdit(props) {
     return (
-        <PopupWithForm name="edit" title="Редактировать профиль" buttonName="Сохранить" isOpened={props.isOpened} onClick={props.onClose}>
+        <PopupWithForm name="edit" title="Редактировать профиль" buttonName="Сохранить" isOpened={props.isOpened} onClose={props.onClose}>
 <fieldset className="form__input">
     <input id="name-input" name="name" placeholder="Имя" type="text" minLength="2" maxLength="40"
         className="form__item form__item_el_name" required></input>
