@@ -4,7 +4,7 @@ import logo from '../images/logo.svg';
 import Api from './Api';
 import Card from './Card';
 import FormValidator from './FormValidator';
-import Popup from './Popup';
+
 import PopupDeletion from './PopupDeletion';
 import PopupWithForm from './PopupWithForm';
 import PopupWithImage from './PopupWithImage';
@@ -16,7 +16,15 @@ import Footer from './Footer'
 
 
 function App() {
-    
+    function handleEditAvatarClick() {
+        document.querySelector('.popup-change-photo').classList.add('.popup_opened')
+    }
+    function handleEditProfileClick() {
+        document.querySelector('.popup_type_edit').classList.add('.popup_opened')
+    }
+    function handleAddPlaceClick() {
+        document.querySelector('.popup-add-card').classList.add('.popup_opened')
+    } 
     return (
     <>
             <div className="page">
@@ -81,7 +89,7 @@ function App() {
                     </div>
                 </div>
                 <div className="popup popup-card-delete">
-                    <div className="popup__container">
+                    <div className="popup__contai ner">
                         <button type="button" className="popup__close-btn btn-opacity-change">+</button>
                         <h2 className="popup__title">Вы уверены?</h2>
                         <form name="delete" className="form form-delete" novalidate>
