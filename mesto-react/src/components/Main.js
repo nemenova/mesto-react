@@ -1,9 +1,10 @@
 import React from 'react'
+import PopupWithForm from './PopupWithForm'
 
 function Main() {
 
    function  handleEditAvatarClick(){
-       document.querySelector('.popup-change-photo').classList.add('.popup_opened')
+       document.querySelector('.popup_type_avatar').classList.add('.popup_opened')
     }
     function handleEditProfileClick(){
         document.querySelector('.popup_type_edit').classList.add('.popup_opened')
