@@ -22,7 +22,8 @@
 }
 @media screen and (max-width: 835px) {
      .profile__photo-edit-btn {
-         display: flex;
         margin: auto;
+        left: 0;
+       
     }
  }

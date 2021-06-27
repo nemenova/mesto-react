@@ -1,7 +1,5 @@
 import React from 'react';
 import './App.css';
-import logo from '../images/logo.svg';
-
 import ImagePopup from './ImagePopup';
 import Header from './Header';
 import Main from './Main'

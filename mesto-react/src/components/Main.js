@@ -19,8 +19,8 @@ function Main(props) {
             })
             .catch((err) => {
                 console.log(err); // выведем ошибку в консоль
-            }, []);
-    })
+            })
+    }, [])
 
 
     return (
