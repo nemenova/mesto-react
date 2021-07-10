@@ -16,7 +16,7 @@ class Api {
         return fetch(`${this._address}/cards`, {
             headers: this._token
         })
-            .then(this._checkResponse)
+            .then(this._checkResponse) 
     }
     getUserInfo() {
         return fetch(`${this._address}/users/me`, {
@@ -25,26 +25,26 @@ class Api {
         })
             .then(this._checkResponse)
     }
-    changeUserInfo() {
+    changeUserInfo(user) {
         return fetch(`${this._address}/users/me`,  {
             method: 'PATCH',
             headers: this._token,
             
             body: JSON.stringify({
-                name: nameInput.value,
-                about: jobInput.value
+                name: user.name,
+                about: user.about
             })
                 
         }).then(this._checkResponse)
     }
-    addNewCard() {
+    addNewCard(card) {
         return fetch(`${this._address}/cards`, {
             method: 'POST',
             headers: this._token,
 
             body: JSON.stringify({
-                name: placeName.value,
-                link: placeImage.value
+                name: card.name,
+                link: card.link
             })
 
         }).then(this._checkResponse)

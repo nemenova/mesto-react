@@ -3,14 +3,20 @@ import PopupWithForm from './PopupWithForm'
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function EditProfilePopup(props) {
-    const [name, setName] = React.useState(" ");
-    const [description, setDescription] = React.useState(" ");
+    const [name, setName] = React.useState(' ');
+    const [description, setDescription] = React.useState(' ');
     const currentUser = React.useContext(CurrentUserContext);
 
     React.useEffect(() => {
         setName(currentUser.name);
         setDescription(currentUser.about);
-    }, [currentUser]); 
+    }, [currentUser, props.isOpened]); 
+
+    // React.useEffect(() => {
+    //     setName(' ');
+    //     setDescription(' ');
+    // }, [props.onClose]); 
+
 
     function handleChangeName(e) {
         setName(e.target.value);
@@ -19,22 +25,20 @@ function EditProfilePopup(props) {
         setDescription(e.target.value);
     }
     function handleSubmit(e) {
-        // Запрещаем браузеру переходить по адресу формы
         e.preventDefault();
-
-        // Передаём значения управляемых компонентов во внешний обработчик
         props.onUpdateUser({
             name,
             about: description,
         });
+        e.target.reset();
     }
     return (
-        <PopupWithForm name="edit" title="Редактировать профиль" buttonName="Сохранить" isOpened={props.isOpened} onClose={props.onClose}>
+        <PopupWithForm onSubmit={handleSubmit} name="edit" title="Редактировать профиль" buttonName="Сохранить" isOpened={props.isOpened} onClose={props.onClose}>
 <fieldset className="form__input">
-                <input id="name-input" name="name" placeholder="Имя" type="text" minLength="2" maxLength="40" onSubmit={handleSubmit} value={name} onChange={handleChangeName}
+                <input id="name-input" name="name" placeholder="Имя" type="text" minLength="2" maxLength="40" value={name || ' '} onChange={handleChangeName}
         className="form__item form__item_el_name" required></input>
     <span className="form__item-error name-input-error"></span>
-                <input id="about-input" name="occupation" placeholder="Род занятий" type="text" minLength="2" maxLength="200" value={description} onChange={handleChangeDescription}
+                <input id="about-input" name="occupation" placeholder="Род занятий" type="text" minLength="2" maxLength="200" value={description || ' '} onChange={handleChangeDescription}
         className="form__item form__item_el_about" required></input>
     <span className="form__item-error about-input-error"></span>
 </fieldset>
