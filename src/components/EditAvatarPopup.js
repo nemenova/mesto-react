@@ -1,7 +1,7 @@
 import React from 'react';
 import PopupWithForm from './PopupWithForm'
 
-function PopupAvatar(props) {
+function EditAvatarPopup(props) {
     return (
         <PopupWithForm name="avatar" title="Обновить аватар" buttonName="Сохранить" isOpened={props.isOpened} onClose={props.onClose}>
             <fieldset className="form__input">
@@ -12,4 +12,4 @@ function PopupAvatar(props) {
         </PopupWithForm>
     )
 }
-export default PopupAvatar;
+export default EditAvatarPopup;
