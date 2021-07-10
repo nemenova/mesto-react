@@ -35,7 +35,7 @@ function App() {
             .then(([user]) => {
                 setCurrentUser(user.name);
                 setCurrentUser(user.about)
-                setCurrentUser(user.avatar)
+               
                 closeAllPopups()
 
             })
@@ -43,6 +43,18 @@ function App() {
                 console.log(err); // выведем ошибку в консоль
             })
    }
+    function handleUpdateAvatar(data) {
+        api.changeProfilePhoto(data)
+            .then(([user]) => {
+                setCurrentUser(user.avatar)
+                closeAllPopups()
+
+            })
+            .catch((err) => {
+                console.log(err); // выведем ошибку в консоль
+            })
+    }
+
     function handleEditAvatarClick() {
         setIsEditAvatarPopupOpen(true)
     }

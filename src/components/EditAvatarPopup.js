@@ -2,10 +2,21 @@ import React from 'react';
 import PopupWithForm from './PopupWithForm'
 
 function EditAvatarPopup(props) {
+    
+        const avatarRef = React.useRef(); 
+
+    function handleSubmit(e) {
+        e.preventDefault();
+
+        onUpdateAvatar({
+            avatar: avatarRef.current.value,
+        });
+        e.target.reset();
+    } 
     return (
-        <PopupWithForm name="avatar" title="Обновить аватар" buttonName="Сохранить" isOpened={props.isOpened} onClose={props.onClose}>
+        <PopupWithForm name="avatar" title="Обновить аватар" buttonName="Сохранить" isOpened={props.isOpened} onSubmit={handleSubmit} onClose={props.onClose}>
             <fieldset className="form__input">
-                <input id="avatar-input" name="avatar" placeholder="Ссылка на картинку" type="url"
+                <input ref={avatarRef} id="avatar-input" name="avatar" placeholder="Ссылка на картинку" type="url"
                     className="form__item form__item_el_avatar" required />
                 <span className="form__item-error avatar-input-error"></span>
             </fieldset>
