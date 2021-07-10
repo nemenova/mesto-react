@@ -30,16 +30,29 @@ function App() {
             })
     }, [])
 
-  
     function handleCardLike(card) {
         // Снова проверяем, есть ли уже лайк на этой карточке
         const isLiked = card.likes.some(i => i._id === currentUser._id);
 
-        // Отправляем запрос в API и получаем обновлённые данные карточки
-        api.like(card._id, !isLiked).then((newCard) => {
-            setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
-        });
+        function request(isLiked) {
+            (isLiked) ? api.dislike(card._id).then((newCard) => {
+                setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
+            }) : api.like(card._id).then((newCard) => {
+                setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
+            });
+        }
+       
+        request(isLiked);
     }
+    // function handleCardLike(card) {
+    //     // Снова проверяем, есть ли уже лайк на этой карточке
+    //     const isLiked = card.likes.some(i => i._id === currentUser._id);
+
+    //     // Отправляем запрос в API и получаем обновлённые данные карточки
+    //     api.like(card._id, !isLiked).then((newCard) => {
+    //         setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
+    //     });
+    // }
     function handleCardDelete(card) {
         api.deleteCard(card._id)
             .then(() => {
@@ -49,8 +62,8 @@ function App() {
     }
 
 
-    function handleUpdateUser(cur) {
-        api.changeUserInfo(cur)
+    function handleUpdateUser(data) {
+        api.changeUserInfo(data)
             .then((user) => {
                 setCurrentUser(user);
                 closeAllPopups()
@@ -59,12 +72,11 @@ function App() {
                 console.log(err); // выведем ошибку в консоль
             })
    }
-    function handleUpdateAvatar(currentUser) {
-        api.changeProfilePhoto(currentUser)
-            .then(([user]) => {
-                setCurrentUser(user.avatar)
+    function handleUpdateAvatar(data) {
+        api.changeProfilePhoto(data)
+            .then((user) => {
+                setCurrentUser(user)
                 closeAllPopups()
-
             })
             .catch((err) => {
                 console.log(err); // выведем ошибку в консоль
@@ -72,7 +84,7 @@ function App() {
     }
     function handleAddPlaceSubmit(card) {
         api.addNewCard(card)
-            .then(([newCard]) => {
+            .then((newCard) => {
                 setCards([newCard, ...cards]);
                 closeAllPopups()
             })

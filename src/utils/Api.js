@@ -1,5 +1,3 @@
-import { nameInput, jobInput, avatarInput, placeName, placeImage} from '../utils/constants.js'
-
 class Api {
     constructor(options) {
         this._address = options.baseUrl;
@@ -49,13 +47,13 @@ class Api {
 
         }).then(this._checkResponse)
     }
-    changeProfilePhoto() {
+    changeProfilePhoto(data) {
         return fetch(`${this._address}/users/me/avatar`, {
             method: 'PATCH',
             headers: this._token,
 
             body: JSON.stringify({
-                avatar: avatarInput.value
+                avatar: data.avatar
             })
 
         }).then(this._checkResponse)
