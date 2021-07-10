@@ -6,7 +6,7 @@ import Footer from './Footer'
 import EditAvatarPopup from './EditAvatarPopup';
 import AddPlacePopup from './AddPlacePopup';
 import EditProfilePopup from './EditProfilePopup';
-import api from '../utils/Api'
+import api from '../utils/api'
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function App() {
@@ -97,7 +97,7 @@ function App() {
         setIsAddPlacePopupOpen(false)
         setSelectedCard(null)
     }
-    
+
     return (
         <>
             <CurrentUserContext.Provider value={currentUser}>
