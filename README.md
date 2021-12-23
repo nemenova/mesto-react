@@ -1,4 +1,4 @@
-# Место
+# Mesto
 
 **Social media about traveling interface.** You can set your profile and make your own cards with voyages descriptions.         
 
@@ -10,11 +10,22 @@ API
 Webpack
 BEM  
 
+### To start:    
+Clone repo to your local machine. Then install dependencies by
+```javascript
+npm run start
+``` 
+to start it in production mode or 
+```javascript
+npm run dev
+``` 
+to start it in developer's mode.  
+
 new: in these version you can do absolutely nothing but it's temporarily, we will provide new features processed by new technology.      
 
 Lang: html5, css, js         
 
-To open: any browser (written with Chrome 88.0.4324.146 using)       
+   
                              
 
 **View the result: https://nemenova.github.io/mesto/**        
